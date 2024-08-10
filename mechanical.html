@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineering Books</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Mechanical Engineering Books</h1>
+    <div id="book-list" class="book-list"></div>
+
+    <div id="book-details" class="book-details" style="display: none;">
+        <!-- Book details will be shown here after clicking a book -->
+    </div>
+
+    <h2>Other Departments</h2>
+    <ul class="department-list">
+        <li><a href="electrical.html">Electrical Engineering</a></li>
+        <li><a href="civil.html">Civil Engineering</a></li>
+        <li><a href="computer_science.html">Computer Science</a></li>
+        <!-- Add more departments as needed -->
+    </ul>
+</div>
+<script src="books.js"></script>
+<script>
+    const department = 'Mechanical Engineering';
+    loadBooks(department);
+</script>
+</body>
+</html>
