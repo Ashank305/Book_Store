@@ -5,17 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engineering Departments</title>
     <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Ocean color background */
+        }
+        .header {
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWaz4RWi9OGGaDh9ljpdDpo3WkNDs1WQp0oQ&s') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .department-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .department-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .department-card img {
+            border-radius: 5px;
+            height: 100px;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+        .department-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .department-card img:hover {
+            transform: scale(1.1);
+        }
+        .footer {
+            background: #004d40; /* Dark green color */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
+<script>
+    if (!localStorage.getItem('loggedIn')) {
+        window.location.href = 'login.html';
+    }
+</script>
+<div class="header">
+    <h1>Book Application</h1>
+</div>
 <div class="container">
     <h1>Engineering Departments</h1>
-    <ul class="department-list">
-        <li><a href="mechanical.html">Mechanical Engineering</a></li>
-        <li><a href="electrical.html">Electrical Engineering</a></li>
-        <li><a href="civil.html">Civil Engineering</a></li>
-        <li><a href="computer_science.html">Computer Science Engineering</a></li>
-        <!-- Add more departments as needed -->
-    </ul>
+    <div class="department-list">
+        <div class="department-card">
+            <img src="path_to_mechanical_image.jpg" alt="Mechanical Engineering">
+            <h2><a href="mechanical.html">Mechanical Engineering</a></h2>
+        </div>
+        <div class="department-card">
+            <img src="path_to_electrical_image.jpg" alt="Electrical Engineering">
+            <h2><a href="electrical.html">Electrical Engineering</a></h2>
+        </div>
+        <div class="department-card">
+            <img src="path_to_civil_image.jpg" alt="Civil Engineering">
+            <h2><a href="civil.html">Civil Engineering</a></h2>
+        </div>
+        <div class="department-card">
+            <img src="path_to_computer_science_image.jpg" alt="Computer Science Engineering">
+            <h2><a href="computer_science.html">Computer Science Engineering</a></h2>
+        </div>
+        <!-- Add more department cards as needed -->
+    </div>
+</div>
+<div class="footer">
+    <h2>About Us</h2>
+    <p>Welcome to our Book Store! We offer a wide range of books across various engineering disciplines. Our store is open from 9 AM to 9 PM every day. For any inquiries, please contact us at <a href="mailto:info@bookstore.com">info@bookstore.com</a>.</p>
+    <p>&copy; 2023 Book Store. All rights reserved.</p>
 </div>
 </body>
 </html>

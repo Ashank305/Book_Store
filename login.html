@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbLrEYbcYIvgKCc5Jpt5wMKSpICc9XRDMs_g&usqp=CAU') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            max-width: 360px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #202124;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+            color: #5f6368;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a73e8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #1669c1;
+        }
+
+        .user-type {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .user-type div {
+            flex: 1;
+            padding: 10px;
+            margin: 0 5px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            color: #5f6368;
+        }
+
+        .user-type div:hover {
+            background-color: #f1f3f4;
+        }
+
+        .user-type div.active {
+            border-color: #1a73e8;
+            color: #1a73e8;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h1>Login</h1>
+    <div class="user-type">
+        <div id="studentOption" class="active" onclick="selectUserType('student')">Student</div>
+        <div id="facultyOption" onclick="selectUserType('faculty')">Faculty</div>
+    </div>
+    <form id="loginForm">
+        <div id="studentFields">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div id="facultyFields" style="display: none;">
+            <label for="facultyUsername">Username:</label>
+            <input type="text" id="facultyUsername" name="facultyUsername">
+            <label for="facultyPassword">Password:</label>
+            <input type="password" id="facultyPassword" name="facultyPassword">
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    function selectUserType(userType) {
+        var studentOption = document.getElementById('studentOption');
+        var facultyOption = document.getElementById('facultyOption');
+        var studentFields = document.getElementById('studentFields');
+        var facultyFields = document.getElementById('facultyFields');
+
+        if (userType === 'student') {
+            studentOption.classList.add('active');
+            facultyOption.classList.remove('active');
+            studentFields.style.display = 'block';
+            facultyFields.style.display = 'none';
+            document.getElementById('username').required = true;
+            document.getElementById('password').required = true;
+            document.getElementById('facultyUsername').required = false;
+            document.getElementById('facultyPassword').required = false;
+        } else {
+            studentOption.classList.remove('active');
+            facultyOption.classList.add('active');
+            studentFields.style.display = 'none';
+            facultyFields.style.display = 'block';
+            document.getElementById('username').required = false;
+            document.getElementById('password').required = false;
+            document.getElementById('facultyUsername').required = true;
+            document.getElementById('facultyPassword').required = true;
+        }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Simple login validation (for demonstration purposes)
+        const isStudent = document.querySelector('#studentFields').style.display === 'block';
+        const username = isStudent ? document.getElementById('username').value.trim() : document.getElementById('facultyUsername').value.trim();
+        const password = isStudent ? document.getElementById('password').value.trim() : document.getElementById('facultyPassword').value.trim();
+
+        console.log('User Type:', isStudent ? 'Student' : 'Faculty');
+        console.log('Username:', username);
+        console.log('Password:', password);
+
+        // Expanded list of valid credentials
+        const validCredentials = {
+            student: { 'Charan': 'mohali' },
+            faculty: { 'Anil': 'facultyPass' }
+        };
+
+        const userType = isStudent ? 'student' : 'faculty';
+        const isValid = validCredentials[userType][username] === password;
+
+        if (isValid) {
+            localStorage.setItem('loggedIn', 'true');
+            window.location.href = 'index.html';
+        } else {
+            alert('Invalid credentials. Please check your username and password.');
+        }
+    });
+</script>
+</body>
+</html>

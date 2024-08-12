@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h1>Ready to start your success story?</h1>
+    <p>Signup to our website and start leafing through your favorite literature today!</p>
+    <form id="signupForm">
+        <label for="fullName">Full name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="janedoe@mail.com" required>
+
+        <label for="interest">Area of interest</label>
+        <input type="text" id="interest" name="interest" placeholder="e.g., Fiction, Science" required>
+
+        <label>
+            <input type="checkbox" id="terms" name="terms" required>
+            I agree to the Terms & Conditions
+        </label>
+
+        <button type="submit">Signup</button>
+    </form>
+</div>
+<script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form values
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const interest = document.getElementById('interest').value;
+        const terms = document.getElementById('terms').checked;
+
+        // Simple validation
+        if (fullName && email && interest && terms) {
+            alert('Form submitted successfully!');
+            // Here you can add code to submit the form data to the server
+        } else {
+            alert('Please fill in all fields and agree to the terms.');
+        }
+    });
+</script>
+</body>
+</html>

@@ -24,8 +24,7 @@ h1, h2 {
 
 .book-item {
     background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
+    border: 1px solid #ddd; padding: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
